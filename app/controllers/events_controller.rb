@@ -28,9 +28,9 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+    @event.location_id = params[:location_id]
 
-    @event.location_id = Location.find(params[:location_id ])
-    @event.save
 
     if @event.update(event_params)
       redirect_to location_path(@location)
